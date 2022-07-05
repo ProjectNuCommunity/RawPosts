@@ -3,6 +3,7 @@
     const handleRawClick = async (postId, topicId, postNumber) => {
       const post = document.querySelector(`article[data-post-id='${postId}']`).querySelector('div.cooked');
       const rawUrl = `https://${location.host}/raw/${topicId}/${postNumber}`;
+      const bugCat = 'https://projectnu.org/c/community/meta/2'
   
       let text;
       try {
@@ -10,10 +11,10 @@
         if (response.ok) {
           text = await response.text();
         } else {
-          text = `Unable to load.\n\nGo to:\n${rawUrl}`;
+          text = `Unable to load.\n\nGo to:\n${rawUrl}. Report it in the bug report category: ${bugCat}`;
         }
       } catch (error) {
-        text = `Network error encountered.\n\nGo to:\n${rawUrl}`;
+        text = `Network error encountered.\n\nGo to:\n${rawUrl}. Report it in the bug report category: ${bugCat}`;
       }
   
       const pos = post.getBoundingClientRect();
